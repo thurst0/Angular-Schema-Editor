@@ -6,19 +6,27 @@ Given the custom domain of these projects, it is fully expected that you may nee
 
 You may want to modify to style the form or add validations to the form controls.  I prefer to leave the validations in the model.
 
-You can also use this schema data to create grids, charts, etc.
+I've provided an example use case, in the form of a grid with some form components.
+
+Dependencies are all included in the project.  Primarily bootstrap, angular, ui-grid.  No steps to setting up beyond downloading.
 
 Demo here : https://plnkr.co/edit/xa5EsR?p=info
 
-## ng-schema
+## JSON Schema
 
-This is a directive that can build a form using specified JSON meta data.  This data can be 
+FormController.js, form.html
+
+This is a schema that can build a form using specified JSON meta data.  
 
 By specifying some meta data, you can quickly build a screen without coding the UI.
+
 This is especially helpful for a use case requiring screens with a lot of inputs or filters.
+
 Once you have the screen and have specified the data collection, you can code what you want to do with the input data.
 
-## schema editor
+## Schema Editor
+
+script.js, index.html
 
 In addition I've supplied a screen you can use to build the JSON meta data and output it.  This allows you to add columns and specify data about the columns.
 
@@ -35,13 +43,14 @@ Value : This will be the value that is initially loaded, and the value that is s
 Visible.    
 Sequence : Order in which form controls will show.  
 
-Programming Reference
+Client Reference
 ---------------------
-form ng-schema="test.json" // This is the path and name of your JSON file.  Alternatively this can be a variable.
-JSON Editor and Field Grid.
+Add schema columns or fields with the add button.
 
-Dependencies
-------------
-bootstrap
-angular
+Remove selected rows with the delete button.
 
+Once you have the grid completed, use the update JSON button to build the output.
+
+Alternatively you can paste the JSON in and use the update Grid button to build the grid from the schema and modify from there.
+
+The preview button will build a grid and form using the JSON schema properties.
