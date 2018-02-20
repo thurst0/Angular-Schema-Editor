@@ -8,6 +8,8 @@ You may want to modify to style the form or add validations to the form controls
 
 You can also use this schema data to create grids, charts, etc.
 
+Demo here : https://plnkr.co/edit/xa5EsR?p=info
+
 ## ng-schema
 
 This is a directive that can build a form using specified JSON meta data.  This data can be 
@@ -21,12 +23,12 @@ Once you have the screen and have specified the data collection, you can code wh
 In addition I've supplied a screen you can use to build the JSON meta data and output it.  This allows you to add columns and specify data about the columns.
 
 Field - Ideally this is the name of the field in the model you will be saving off or validating against.
-Type - This is the data type
-	String
-	Number
-	Date
-	Datetime
-	Boolean
++Type - This is the data type
++String
++Number
++Date
++Datetime
++Boolean
 Read Only 
 Caption - This will be the label and placeholder if applicable.
 Value - This will be the value that is initially loaded, and the value that is supplied on submit
