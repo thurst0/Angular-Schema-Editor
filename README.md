@@ -16,13 +16,13 @@ Demo here : https://plnkr.co/edit/xa5EsR?p=info
 
 FormController.js, form.html
 
-This is a schema that can build a form using specified JSON meta data.  
+This is a schema that can build a form/fiter and grid using specified JSON meta data.  
 
 By specifying some meta data, you can quickly build a screen without coding the UI.
 
-This is especially helpful for a use case requiring screens with a lot of inputs or filters.
+This is especially helpful for a use case requiring screens with a lot of inputs or filters, and/or data to display.
 
-Once you have the screen and have specified the data collection, you can code what you want to do with the input data.
+Once you have the screen and have specified the data collection, you can code what you want to do with any input data.
 
 ## Schema Editor
 
@@ -31,17 +31,17 @@ script.js, index.html
 In addition I've supplied a screen you can use to build the JSON meta data and output it.  This allows you to add columns and specify data about the columns.
 
 Field : Ideally this is the name of the field in the model you will be saving off or validating against.  
-Type : This is the data type.  
+Type : This is the data type.  TODO : This applies only to the grid now,  need to change form input type based on this.
 1.) String
 2.) Number
 3.) Date
 4.) Datetime
 5.) Boolean.  
-Read Only.  
+Read Only : Specify whether data can be viewed only
 Caption : This will be the label and placeholder if applicable.  
-Value : This will be the value that is initially loaded, and the value that is supplied on submit.  
-Visible.    
-Sequence : Order in which form controls will show.  
+Value : This will be the value that is initially loaded, and will become value that is supplied on submit.  
+Visible : Whether grid column is shown intially.
+Sequence : Order in which form controls, and grid columns will show.  
 
 Client Reference
 ---------------------
