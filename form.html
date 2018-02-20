@@ -1,0 +1,27 @@
+<div class="modal-body" ng-init="loaddefaults()">
+  <!-- FORM -->
+  <form name="frmDemo" id="frmDemo" role="search">
+    <div class="form-group row">
+      <div ng-repeat="input in form_data">
+        <div class="clearfix" ng-if="$index % 2 == 0"></div>
+        <div class='col-sm-12'>
+          <label for="input">{{input.caption}}</label>
+          <div class="input-group margin-bottom wrapper">
+            <span class="input-group-addon" style="width:0px; padding-left:0px; padding-right:0px; border:none;"></span>
+            <input id="input" class="form-control margin-bottom" autocomplete='off' ng-model="input.value" ng-disabled="input.read_only" placeholder="{{input.caption}}">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ENTER : This could be a filter to load, or to add row -->
+    <button id="btnEnter" class="btn btn-success btn-block margin-top margin-bottom" type="submit" ng-click="enter()" ng-disabled="frmDemo.$invalid">ENTER</button>
+  </form>
+  <!-- GRID -->
+  <div class="row">
+    <div id="grid1" class="fill grid" ui-grid="gridOptions" data-ng-if="!refresh" ui-grid-pagination ui-grid-selection>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

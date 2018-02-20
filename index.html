@@ -1,46 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link data-require="bootstrap-css@3.*" data-semver="3.3.7" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" />
-    <script data-require="angularjs@1.6.*" data-semver="1.6.4" src="https://code.angularjs.org/1.6.4/angular.min.js"></script>
-    <script data-require="angular-animate@1.6.*" data-semver="1.6.4" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-animate.min.js"></script>
-    <script data-require="angular-touch@1.6.*" data-semver="1.6.2" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-touch.js"></script>
-    <script data-require="ui-bootstrap@*" data-semver="2.5.0" src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-2.5.0.js"></script>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-grid/4.0.2/ui-grid.css" />
-    <script src="script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-grid/4.0.2/ui-grid.js"></script>
-  </head>
-  <body ng-app="app">
-    <div class="container-fluid">
+
+<head>
+  <link data-require="bootstrap-css@3.*" data-semver="3.3.7" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" />
+  <script data-require="angularjs@1.6.*" data-semver="1.6.4" src="https://code.angularjs.org/1.6.4/angular.min.js"></script>
+  <script data-require="angular-animate@1.6.*" data-semver="1.6.4" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-animate.min.js"></script>
+  <script data-require="angular-touch@1.6.*" data-semver="1.6.2" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-touch.js"></script>
+  <script data-require="ui-bootstrap@*" data-semver="2.5.0" src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-2.5.0.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-grid/4.0.2/ui-grid.css" />
+  <script src="script.js"></script>
+  <script src="FormController.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-grid/4.0.2/ui-grid.js"></script>
+</head>
+
+<body ng-app="app">
+  <div class="container-fluid">
     <div class="row" ng-controller="BaseController">
       <!-- ALERTS -->
-    	<div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)"  dismiss-on-timeout="5000">{{alert.msg}}</div>
-    	<!-- GRID BUTTONS -->
-    	<div class="row margin-bottom margin-top container-fluid">
-    	  <b class="pull-left">Grid Editor</b>
-    	  <button id="btnSeq" class="btn pull-right" type="submit" ng-click="resequence()" ng-disabled="false">Sequence</button>					
-    	  <button id="btnAddRow" class="btn btn-success pull-right" type="submit" ng-click="addRow()" ng-disabled="false">Add Row</button>					
-    	  <button id="btnDeleteRows" class="btn btn-danger pull-right" type="submit" ng-click="deleteRows()" ng-disabled="false">Delete Row(s)</button>				
-    	</div>
-    	<!-- GRID -->
-    	<div id="grid1" class="fill grid" ui-grid="gridOptions" data-ng-if="!refresh" ui-grid-selection ui-grid-edit ui-grid-save-state>
-    	</div>
-    	<!-- UPDATE JSON -->
-    	<button id="btnUpdateJSON" class="btn btn-block" type="submit" ng-click="updateJSON()" ng-disabled="false">Update JSON</button>					
-    	<!-- JSON EDITOR -->
-  		<div class="form-group margin-top margin-bottom">
-  			<label for="input_json">JSON Editor</label>
-  			<textarea id="input_json" class="form-control" ng-model="input.json" rows="4" placeholder="JSON" ng-blur="validateJSON()" ng-required="true" ng-class="{'border-warning': !input.valid}"></textarea>
-  		</div>
-  		<!-- VALID : This is just a check to make the form invalid.. Their are cleaner ways to do this in new angularjs --> 
-  		<div class="form-group" ng-show="false">
-  			<label for="input_valid">Valid Check</label>
-  			<textarea id="input_valid" class="form-control" ng-model="input.valid" ng-required="true"></textarea>
-  		</div>
-  		<!-- UPDATE GRID -->
-    	<button id="btnUpdateGrid" class="btn btn-block" type="submit" ng-click="updateGrid()" ng-disabled="false">Update Grid</button>					
-	</div>	
-	</div>
-  </body>
+      <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}}</div>
+      <!-- GRID BUTTONS -->
+      <div class="row margin-bottom margin-top container-fluid">
+        <b class="pull-left">Grid Editor</b>
+        <button id="btnSeq" class="btn pull-right" type="submit" ng-click="resequence()" ng-disabled="false">Sequence</button>
+        <button id="btnAddRow" class="btn btn-success pull-right" type="submit" ng-click="addRow()" ng-disabled="false">Add Row</button>
+        <button id="btnDeleteRows" class="btn btn-danger pull-right" type="submit" ng-click="deleteRows()" ng-disabled="false">Delete Row(s)</button>
+      </div>
+      <!-- GRID -->
+      <div id="grid1" class="fill grid" ui-grid="gridOptions" data-ng-if="!refresh" ui-grid-cellNav ui-grid-selection ui-grid-edit ui-grid-save-state ui-grid-resize-columns ui-grid-move-columns>
+      </div>
+      <!-- UPDATE JSON -->
+      <button id="btnUpdateJSON" class="btn btn-block" type="submit" ng-click="updateJSON()" ng-disabled="false">Update JSON</button>
+      <!-- JSON EDITOR -->
+      <div class="form-group margin-top margin-bottom">
+        <label for="input_json">JSON Editor</label>
+        <textarea id="input_json" class="form-control" ng-model="input.json" rows="4" placeholder="JSON" ng-blur="validateJSON()" ng-required="true" ng-class="{'border-warning': !input.valid}"></textarea>
+      </div>
+      <!-- VALID : This is just a check to make the form invalid.. Their are cleaner ways to do this in new angularjs -->
+      <div class="form-group" ng-show="false">
+        <label for="input_valid">Valid Check</label>
+        <textarea id="input_valid" class="form-control" ng-model="input.valid" ng-required="true"></textarea>
+      </div>
+      <!-- UPDATE GRID -->
+      <button id="btnUpdateGrid" class="btn btn-block" type="submit" ng-click="updateGrid()" ng-disabled="false">Update Grid</button>
+      <button id="btnPreview" class="btn btn-block btn-success" type="submit" ng-click="preview()" ng-disabled="!input.json || !input.valid">PREVIEW</button>
+    </div>
+  </div>
+</body>
+
 </html>
